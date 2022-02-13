@@ -42,3 +42,10 @@ Second screen to show times when each drink was taken
 iWatch home screen widget
 
 No companion iOS app (hmmmm....)
+
+
+#### Misc notes
+
+feb 13 2022:
+
+I find it remarkable how little lines of code is needed in SwiftUI to accomplish our tasks. Of course, "Lines of Code" aren't generally a meaningful metric on the quality of a project or its development, and this app does is so simple that it doesn't require a lot of behind-the-scenes stuff, but I still find it cool. IDK, always cool to see a solution evolve over time into something simpler and simpler.
