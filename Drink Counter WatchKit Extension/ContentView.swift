@@ -11,37 +11,53 @@ struct ContentView: View {
     @State private var showSecondView = false
     var message = "Hello from ContentView"
     
-    @State private var speed = 10.0
+    @State private var speed = 0 // Represents index todo "subtract 1"
     @State private var isEditing = true
     
     var body: some View {
-        
         VStack {
             
-            Slider(
-                value: $speed,
-                in: 0...20,
-                step: 1,
-                onEditingChanged: { editing in
-                    isEditing = editing
-                },
-                minimumValueLabel: Text("0"),
-                maximumValueLabel: Text("20")
-            ) {
-                Text("Speed")
-            }
-            Text("Shots: " + String(Int(speed)))
-                .foregroundColor(isEditing ? .green : .white)
-                .font(.title2)
+//            Text("How many drinks to count")
+//                .font(/*@START_MENU_TOKEN@*/.subheadline/*@END_MENU_TOKEN@*/)
+//
+//            Spacer()
+            
+            Picker(
+                "How many drinks?",
+                selection: $speed,
+                content: {
+                    ForEach(1..<21, content: {
+                        index in Text(String(index))
+                    })
+                }
+            )
+            .font(.title)
+            
+//            Slider(
+//                value: $speed,
+//                in: 0...20,
+//                step: 1,
+//                onEditingChanged: { editing in
+//                    isEditing = editing
+//                },
+//                minimumValueLabel: Text("0"),
+//                maximumValueLabel: Text("20")
+//            ) {
+//                Text("Speed")
+//            }
+//
+//            Text("Shots: " + String(Int(speed)))
+//                .foregroundColor(isEditing ? .green : .white)
+//                .font(.title2)
             
             Spacer()
             
             Button(action: {
                 self.showSecondView.toggle()
             }) {
-                Text("Let's party 😵")
+                Text("Let's drink 🥂")
             }.sheet(isPresented: $showSecondView) {
-                DrinkCounterView(drinkLimit: Int(speed))
+                DrinkCounterView(drinkLimit: Int(speed) + 1)
                     .toolbar(content: { // https://stackoverflow.com/questions/64194263
                         ToolbarItem(placement: .cancellationAction) {
                             Button("Go back") {
