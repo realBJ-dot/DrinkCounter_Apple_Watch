@@ -9,22 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showSecondView = false
-    var message = "Hello from ContentView"
-    
-    @State private var speed = 0 // Represents index todo "subtract 1"
-    @State private var isEditing = true
+    @State private var drinksToCountPickerIndex = 0 // Represents index todo "subtract 1"
     
     var body: some View {
         VStack {
-            
+//            The "Label" in the Picker seems kinda small in terms of font size,
+//             either learn to change the size, or add a Text and empty-string the Label,
+//             or keep as-is. Would help to ask live users what they think of the size, if it even makes a difference...
 //            Text("How many drinks to count")
-//                .font(/*@START_MENU_TOKEN@*/.subheadline/*@END_MENU_TOKEN@*/)
+//                .font(.subheadline)
 //
 //            Spacer()
             
             Picker(
                 "How many drinks?",
-                selection: $speed,
+                selection: $drinksToCountPickerIndex,
                 content: {
                     ForEach(1..<21, content: {
                         index in Text(String(index))
@@ -33,23 +32,6 @@ struct ContentView: View {
             )
             .font(.title)
             
-//            Slider(
-//                value: $speed,
-//                in: 0...20,
-//                step: 1,
-//                onEditingChanged: { editing in
-//                    isEditing = editing
-//                },
-//                minimumValueLabel: Text("0"),
-//                maximumValueLabel: Text("20")
-//            ) {
-//                Text("Speed")
-//            }
-//
-//            Text("Shots: " + String(Int(speed)))
-//                .foregroundColor(isEditing ? .green : .white)
-//                .font(.title2)
-            
             Spacer()
             
             Button(action: {
@@ -57,42 +39,19 @@ struct ContentView: View {
             }) {
                 Text("Let's drink 🥂")
             }.sheet(isPresented: $showSecondView) {
-                DrinkCounterView(drinkLimit: Int(speed) + 1)
-                    .toolbar(content: { // https://stackoverflow.com/questions/64194263
+                DrinkCounterView(drinkLimit: Int(drinksToCountPickerIndex) + 1)
+                    .toolbar(content: {
+                        // https://stackoverflow.com/questions/64194263
                         ToolbarItem(placement: .cancellationAction) {
                             Button("Go back") {
                                 self.showSecondView.toggle()
                             }
                         }
                     })
-                
             }
-            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .padding(.all)
             .frame(width: 150.0)
-            
-            
         }
-        
-        //        Button(action: {
-        //            // What to perform
-        //            randomInt = Int.random(in: 0..<messages.count)
-        //            randomMsg = messages[randomInt]
-        //            print(randomMsg)
-        //            self.showSecondView.toggle()
-        //        }) {
-        //            Text("hi im button")
-        //
-        //
-        //        }.sheet(isPresented: $showSecondView) {
-        //            DrinkCounterView()
-        //                .toolbar(content: { // https://stackoverflow.com/questions/64194263
-        //                    ToolbarItem(placement: .cancellationAction) {
-        //                        Button("Go back") {
-        //                            self.showSecondView.toggle()
-        //                        }
-        //                    }
-        //                })
-        //        }
     }
 }
 
