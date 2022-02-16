@@ -42,7 +42,25 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry
-        handler(nil)
+        switch complication.family {
+        case .graphicCircular:
+            // Infograph modular
+            let circularClosedGaugeTemplate = CLKComplicationTemplateGraphicCircularClosedGaugeText()
+            
+            let centerText = CLKSimpleTextProvider(text: "12")
+            centerText.tintColor = .white
+            circularClosedGaugeTemplate.centerTextProvider = centerText
+            
+            let gaugeColor = UIColor(red: 0.0, green: 167.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+            let gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: gaugeColor, fillFraction: (12.0/14.0))
+            circularClosedGaugeTemplate.gaugeProvider = gaugeProvider
+            
+            let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: circularClosedGaugeTemplate)
+            
+            handler(entry)
+        default:
+            handler(nil)
+        }
     }
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
