@@ -43,18 +43,24 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry
         switch complication.family {
+        // https://github.com/MilanistaDev/ComplicationsWatchSample/blob/master/ComplicationsWatchSample%20Extension/ComplicationController.swift#L72
         case .graphicCircular:
             // Infograph modular
             let circularClosedGaugeTemplate = CLKComplicationTemplateGraphicCircularClosedGaugeText()
             
+            // TODO 1. Replace the center text with the current drink count data
             let centerText = CLKSimpleTextProvider(text: "12")
             centerText.tintColor = .white
             circularClosedGaugeTemplate.centerTextProvider = centerText
             
+            // TODO 2. Change the gauge color to a red-green scale OR green?
             let gaugeColor = UIColor(red: 0.0, green: 167.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+            
+            // TODO 3. fillFraction (currentDrinks / drinkLimit)
             let gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: gaugeColor, fillFraction: (12.0/14.0))
             circularClosedGaugeTemplate.gaugeProvider = gaugeProvider
             
+            // TODO 4. What is this timeline entry? What is the Date() doing??
             let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: circularClosedGaugeTemplate)
             
             handler(entry)
