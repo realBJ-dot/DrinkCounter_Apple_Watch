@@ -35,11 +35,20 @@ struct ContentView: View {
             Spacer()
             
             Button(action: {
+                print("Drinks to count = ")
+                print(drinksToCountPickerIndex)
                 self.showSecondView.toggle()
             }) {
-                Text("Let's drink 🥂")
+//                Text("Let's drink 🥂")
+                
+                if (drinksToCountPickerIndex == 0) {
+                    Text("Count 1 drink 🥂")
+                }
+                else {
+                    Text("Count \(drinksToCountPickerIndex + 1) drinks 🥂")
+                }
             }.sheet(isPresented: $showSecondView) {
-                DrinkCounterView(drinkLimit: Int(drinksToCountPickerIndex) + 1)
+                DrinkCounterView(drinkLimit: Int(drinksToCountPickerIndex + 1))
                     .toolbar(content: {
                         // https://stackoverflow.com/questions/64194263
                         ToolbarItem(placement: .cancellationAction) {
@@ -50,7 +59,8 @@ struct ContentView: View {
                     })
             }
             .padding(.all)
-            .frame(width: 150.0)
+            .font(/*@START_MENU_TOKEN@*/.caption2/*@END_MENU_TOKEN@*/)
+//            .frame(width: 150.0)
         }
     }
 }

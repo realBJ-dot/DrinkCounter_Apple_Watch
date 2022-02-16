@@ -8,9 +8,8 @@
 import SwiftUI
 
 func calculateColorBasedOnDrinksConsumed(_ drinkCount: Int, _ limit: Int) -> Color {
-    
     let ratio = Double(drinkCount) / Double(limit);
-    print(ratio)
+    print("ratio = \(ratio)")
     
     if (ratio >= 0 && ratio < 0.25) {
         return Color.green
@@ -38,7 +37,7 @@ struct DrinkCounterView: View {
 //    @State private var drinkLimit = 8
     
     var drinkLimit: Int
-    
+        
     var body: some View {
         ZStack {
             VStack {
@@ -92,10 +91,9 @@ struct DrinkCounterView: View {
                     }
                     .background(Color.clear)
                     .foregroundColor(.black)
-
-//                    .buttonStyle(PlainButtonStyle())
                     .cornerRadius(50)
                     .padding()
+//                    .buttonStyle(PlainButtonStyle())
 
                     Spacer()
                     
@@ -112,9 +110,6 @@ struct DrinkCounterView: View {
                     
                     Spacer()
                 }
-                
-//                Spacer()
-
             }
         }
         .background(
