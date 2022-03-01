@@ -6,9 +6,11 @@
 //
 
 import ClockKit
-
+import WatchKit
+import UIKit
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
+    
     
     // MARK: - Complication Configuration
 
@@ -49,7 +51,19 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             let circularClosedGaugeTemplate = CLKComplicationTemplateGraphicCircularClosedGaugeText()
             
             // TODO 1. Replace the center text with the current drink count data
-            let centerText = CLKSimpleTextProvider(text: "12")
+            // -
+            
+            let keychain = KeychainSwift()
+            print("\nFrom complication:")
+            let count = keychain.get("ctr")
+            print(count!)
+            print("end complication\n")
+//            print("all keys")
+//            print(keychain.allKeys)
+            
+            
+            // -
+            let centerText = CLKSimpleTextProvider(text: count ?? "0")
             centerText.tintColor = .white
             circularClosedGaugeTemplate.centerTextProvider = centerText
             

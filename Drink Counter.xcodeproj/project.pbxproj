@@ -20,6 +20,7 @@
 		2840EA9327345240004E67DB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2840EA9227345240004E67DB /* Preview Assets.xcassets */; };
 		2840EA9F27345240004E67DB /* Drink_CounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840EA9E27345240004E67DB /* Drink_CounterTests.swift */; };
 		2840EAAA27345240004E67DB /* Drink_CounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840EAA927345240004E67DB /* Drink_CounterUITests.swift */; };
+		28DA69D127C871B70024A68A /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DA69D027C871B70024A68A /* KeychainSwiftDistrib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		2840EAA527345240004E67DB /* Drink CounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Drink CounterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2840EAA927345240004E67DB /* Drink_CounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink_CounterUITests.swift; sourceTree = "<group>"; };
 		2840EAAB27345240004E67DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28DA69D027C871B70024A68A /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				2840EA9427345240004E67DB /* Info.plist */,
 				2840EA9527345240004E67DB /* PushNotificationPayload.apns */,
 				2840EA9127345240004E67DB /* Preview Content */,
+				28DA69D027C871B70024A68A /* KeychainSwiftDistrib.swift */,
 			);
 			path = "Drink Counter WatchKit Extension";
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28DA69D127C871B70024A68A /* KeychainSwiftDistrib.swift in Sources */,
 				2840EA8A2734523F004E67DB /* NotificationController.swift in Sources */,
 				2840EA882734523F004E67DB /* ContentView.swift in Sources */,
 				2840EA8E2734523F004E67DB /* ComplicationController.swift in Sources */,

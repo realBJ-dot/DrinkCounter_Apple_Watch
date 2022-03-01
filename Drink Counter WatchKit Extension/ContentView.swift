@@ -59,7 +59,7 @@ struct ContentView: View {
                     })
             }
             .padding(.all)
-            .font(/*@START_MENU_TOKEN@*/.caption2/*@END_MENU_TOKEN@*/)
+            .font(.caption2)
 //            .frame(width: 150.0)
         }
     }

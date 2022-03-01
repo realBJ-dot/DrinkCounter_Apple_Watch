@@ -8,6 +8,13 @@
 import SwiftUI
 
 func calculateColorBasedOnDrinksConsumed(_ drinkCount: Int, _ limit: Int) -> Color {
+    print("---------")
+    let keychain = KeychainSwift()
+    keychain.set(String(drinkCount), forKey: "ctr")
+    print("all keys")
+    print(keychain.allKeys)
+    print(keychain.get("ctr"))
+    
     let ratio = Double(drinkCount) / Double(limit);
     print("ratio = \(ratio)")
     
